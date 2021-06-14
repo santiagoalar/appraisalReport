@@ -1,4 +1,9 @@
 package org.example.generic_values;
 
-public class Full_name {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Full_name implements ValueObject<String> {
+    public String value() {
+        return null;
+    }
 }

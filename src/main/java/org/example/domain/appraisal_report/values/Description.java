@@ -1,5 +1,9 @@
 package org.example.domain.appraisal_report.values;
 
-public class Description {
+import co.com.sofka.domain.generic.ValueObject;
 
+public class Description implements ValueObject<String> {
+    public String value() {
+        return null;
+    }
 }

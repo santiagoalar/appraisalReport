@@ -1,4 +1,9 @@
 package org.example.domain.appraisal_report.values;
 
-public class Neighborhood_name {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Neighborhood_name implements ValueObject<String> {
+    public String value() {
+        return null;
+    }
 }
