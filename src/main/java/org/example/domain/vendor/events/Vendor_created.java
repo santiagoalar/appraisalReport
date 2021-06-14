@@ -16,4 +16,16 @@ public class Vendor_created extends DomainEvent {
         this.email = email;
         this.phone_number = phone_number;
     }
+
+    public Full_name getFull_name() {
+        return full_name;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public Phone_number getPhone_number() {
+        return phone_number;
+    }
 }

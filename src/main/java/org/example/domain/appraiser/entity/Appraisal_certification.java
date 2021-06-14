@@ -5,6 +5,7 @@ import org.example.domain.appraiser.values.Appraisal_certification_id;
 import org.example.domain.appraiser.values.Expedition_date;
 import org.example.domain.appraiser.values.Expiration_date;
 
+//Las entidades no manejan eventos
 public class Appraisal_certification extends Entity<Appraisal_certification_id> {
     private Expedition_date expedition_date;
     private Expiration_date expiration_date;
