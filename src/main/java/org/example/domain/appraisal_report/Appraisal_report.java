@@ -39,7 +39,7 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
         events.forEach(appraisal_report::applyEvent);
         return appraisal_report;
     }
-    
+
 
     public void assign_vendor(Vendor_id vendor_id, Full_name full_name, Email email, Phone_number phone_number){
 
