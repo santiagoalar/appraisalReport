@@ -3,7 +3,6 @@ package org.example.domain.vendor.commands;
 import co.com.sofka.domain.generic.Command;
 import org.example.domain.vendor.values.Vendor_id;
 import org.example.generic_values.Email;
-import org.example.generic_values.Full_name;
 
 public class Update_email implements Command {
     private final Vendor_id vendor_id;
