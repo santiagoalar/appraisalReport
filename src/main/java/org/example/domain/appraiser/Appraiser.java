@@ -22,4 +22,5 @@ public class Appraiser extends AggregateEvent<Appraiser_id> {
 
     }
 
+
 }

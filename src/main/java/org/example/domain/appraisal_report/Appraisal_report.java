@@ -1,17 +1,17 @@
 package org.example.domain.appraisal_report;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import org.example.domain.appraisal_report.events.Appraiser_assigned;
-import org.example.domain.appraisal_report.events.House_info_added;
-import org.example.domain.appraisal_report.events.Neighborhood_assigned;
-import org.example.domain.appraisal_report.events.Vendor_added;
-import org.example.domain.appraisal_report.values.Appraisal_report_id;
+import org.example.domain.appraisal_report.events.*;
+import org.example.domain.appraisal_report.values.*;
 import org.example.domain.appraiser.Appraiser;
+import org.example.domain.appraiser.values.Appraiser_id;
 import org.example.domain.house_information.values.House_information_id;
 import org.example.domain.vendor.values.Vendor_id;
 import org.example.generic_values.Email;
 import org.example.generic_values.Full_name;
 import org.example.generic_values.Phone_number;
+
+import java.util.Objects;
 
 
 public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
@@ -19,20 +19,46 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
 
     public Appraisal_report(Appraisal_report_id entityId) {
         super(entityId);
+        appendChange(new Appraisal_report_created()).apply();
     }
 
-    public void add_vendor(Vendor_id vendor_id, Full_name full_name, Email email, Phone_number phone_number){
-        appendChange(new Vendor_added(vendor_id, full_name, email, phone_number)).apply();
+    public void assign_vendor(Vendor_id vendor_id, Full_name full_name, Email email, Phone_number phone_number){
+
+        Objects.requireNonNull(vendor_id);
+        Objects.requireNonNull(full_name);
+        Objects.requireNonNull(email);
+        Objects.requireNonNull(phone_number);
+
+        appendChange(new Vendor_assigned(vendor_id, full_name, email, phone_number)).apply();
     }
 
-    public void add_house_info(House_information_id house_information_id){
-        appendChange(new House_info_added(house_information_id)).apply();
+    public void assign_appraiser(Appraiser_id appraiser_id, Full_name full_name, Email email,
+                                 Phone_number phone_number){
+
+        Objects.requireNonNull(appraiser_id);
+        Objects.requireNonNull(full_name);
+        Objects.requireNonNull(email);
+        Objects.requireNonNull(phone_number);
+
+        appendChange(new Appraiser_assigned(appraiser_id, full_name, email, phone_number)).apply();
     }
 
-    public void assign_appraiser(){
-        appendChange(new Appraiser_assigned()).apply();
+    public void assign_house_info(House_information_id house_information_id){
+        appendChange(new House_info_assigned(house_information_id)).apply();
     }
-    public void assign_neighborhood(){
-        appendChange(new Neighborhood_assigned()).apply();
+
+    public void assign_neighborhood(Neighborhood_id entityId, Neighborhood_name neighborhood_name,
+                                    Map_reference map_reference, Neighborhood_growth neighborhood_growth,
+                                    Description description, Boundaries boundaries){
+
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(neighborhood_name);
+        Objects.requireNonNull(map_reference);
+        Objects.requireNonNull(neighborhood_growth);
+        Objects.requireNonNull(description);
+        Objects.requireNonNull(boundaries);
+
+        appendChange(new Neighborhood_assigned(entityId, neighborhood_name,
+                map_reference, neighborhood_growth, description, boundaries)).apply();
     }
 }
