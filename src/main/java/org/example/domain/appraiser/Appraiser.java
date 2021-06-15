@@ -2,6 +2,7 @@ package org.example.domain.appraiser;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import org.example.domain.appraiser.events.Appraiser_created;
+import org.example.domain.appraiser.events.Full_name_updated;
 import org.example.domain.appraiser.values.Appraisal_certification_id;
 import org.example.domain.appraiser.values.Appraiser_id;
 import org.example.generic_values.Email;
@@ -20,6 +21,10 @@ public class Appraiser extends AggregateEvent<Appraiser_id> {
         super(entityId);
         appendChange(new Appraiser_created(full_name, email, phone_number)).apply();
 
+    }
+
+    public void update_full_name(Full_name full_name){
+        appendChange(new Full_name_updated(full_name)).apply();
     }
 
 
