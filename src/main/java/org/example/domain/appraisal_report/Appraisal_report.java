@@ -19,7 +19,7 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
 
     public Appraisal_report(Appraisal_report_id entityId) {
         super(entityId);
-        appendChange(new Appraisal_report_created()).apply();
+        appendChange(new Created_appraisal_report()).apply();
     }
 
     public void assign_vendor(Vendor_id vendor_id, Full_name full_name, Email email, Phone_number phone_number){
@@ -29,7 +29,7 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
         Objects.requireNonNull(email);
         Objects.requireNonNull(phone_number);
 
-        appendChange(new Vendor_assigned(vendor_id, full_name, email, phone_number)).apply();
+        appendChange(new Assigned_vendor(vendor_id, full_name, email, phone_number)).apply();
     }
 
     public void assign_appraiser(Appraiser_id appraiser_id, Full_name full_name, Email email,
@@ -40,11 +40,11 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
         Objects.requireNonNull(email);
         Objects.requireNonNull(phone_number);
 
-        appendChange(new Appraiser_assigned(appraiser_id, full_name, email, phone_number)).apply();
+        appendChange(new Assigned_appraiser(appraiser_id, full_name, email, phone_number)).apply();
     }
 
     public void assign_house_info(House_information_id house_information_id){
-        appendChange(new House_info_assigned(house_information_id)).apply();
+        appendChange(new Assigned_house_information(house_information_id)).apply();
     }
 
     public void assign_neighborhood(Neighborhood_id entityId, Neighborhood_name neighborhood_name,
@@ -58,7 +58,7 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
         Objects.requireNonNull(description);
         Objects.requireNonNull(boundaries);
 
-        appendChange(new Neighborhood_assigned(entityId, neighborhood_name,
+        appendChange(new Assigned_neighborhood(entityId, neighborhood_name,
                 map_reference, neighborhood_growth, description, boundaries)).apply();
     }
 }
