@@ -1,7 +1,6 @@
 package org.example.domain.appraisal_report.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import org.example.domain.appraisal_report.values.*;
 import org.example.domain.appraiser.Appraiser;
 import org.example.domain.appraiser.values.Appraiser_id;
 import org.example.generic_values.Email;
