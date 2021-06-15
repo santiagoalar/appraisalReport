@@ -1,12 +1,15 @@
 package org.example.domain.appraiser;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import org.example.domain.appraiser.events.*;
 import org.example.domain.appraiser.values.Appraisal_certification_id;
 import org.example.domain.appraiser.values.Appraiser_id;
 import org.example.generic_values.Email;
 import org.example.generic_values.Full_name;
 import org.example.generic_values.Phone_number;
+
+import java.util.List;
 
 public class Appraiser extends AggregateEvent<Appraiser_id> {
 
@@ -24,6 +27,13 @@ public class Appraiser extends AggregateEvent<Appraiser_id> {
     private Appraiser(Appraiser_id entityId){
         super(entityId);
         subscribe(new Updated_appraiser(this));
+    }
+
+    //Factory to create aggregates (aplicando cada evento)
+    public static Appraiser from(Appraiser_id appraiser_id, List<DomainEvent> events){
+        var appraiser = new Appraiser(appraiser_id);
+        events.forEach(appraiser::applyEvent);
+        return appraiser;
     }
 
     public void update_full_name(Full_name full_name){
