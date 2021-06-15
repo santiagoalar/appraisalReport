@@ -10,4 +10,8 @@ public class Assigned_house_information extends DomainEvent {
         super("sofka.appraisal_report.house_info_id");
         this.house_information_id = house_information_id;
     }
+
+    public House_information_id getHouse_information_id() {
+        return house_information_id;
+    }
 }

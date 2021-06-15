@@ -9,7 +9,7 @@ public class Updated_house_information extends EventChange {
     public Updated_house_information(House_information house_information) {
 
         /*apply((Created_house_information event)->{
-        
+
         });*/
 
         apply((Assigned_improvements event)->{

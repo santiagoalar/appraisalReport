@@ -15,7 +15,12 @@ import java.util.Objects;
 
 
 public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
+
     protected Appraiser appraiser;
+    protected Appraiser_id appraiser_id;
+    protected Vendor_id vendor_id;
+    protected Neighborhood_id neighborhood_id;
+    protected House_information_id house_information_id;
 
     public Appraisal_report(Appraisal_report_id entityId) {
         super(entityId);
