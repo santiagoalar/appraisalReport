@@ -2,12 +2,9 @@ package org.example.domain.vendor;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.generic.Entity;
-import org.example.domain.appraiser.Appraiser;
 import org.example.domain.appraiser.events.Updated_email;
 import org.example.domain.appraiser.events.Updated_full_name;
 import org.example.domain.appraiser.events.Updated_phone_number;
-import org.example.domain.appraiser.values.Appraiser_id;
 import org.example.domain.vendor.events.Created_vendor;
 import org.example.domain.vendor.values.Vendor_id;
 import org.example.generic_values.Email;
