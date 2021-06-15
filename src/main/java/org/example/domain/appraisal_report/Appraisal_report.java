@@ -1,6 +1,7 @@
 package org.example.domain.appraisal_report;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import org.example.domain.appraisal_report.events.*;
 import org.example.domain.appraisal_report.values.*;
 import org.example.domain.appraiser.Appraiser;
@@ -11,6 +12,7 @@ import org.example.generic_values.Email;
 import org.example.generic_values.Full_name;
 import org.example.generic_values.Phone_number;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -26,6 +28,18 @@ public class Appraisal_report extends AggregateEvent<Appraisal_report_id> {
         super(entityId);
         appendChange(new Created_appraisal_report()).apply();
     }
+
+    /*private Appraisal_report(Appraisal_report_id entityId){
+        super(entityId);
+        subscribe(new Appraisal_report(this));
+    }*/
+
+    public static Appraisal_report from(Appraisal_report_id appraisal_report_id, List<DomainEvent> events){
+        var appraisal_report = new Appraisal_report(appraisal_report_id);
+        events.forEach(appraisal_report::applyEvent);
+        return appraisal_report;
+    }
+    
 
     public void assign_vendor(Vendor_id vendor_id, Full_name full_name, Email email, Phone_number phone_number){
 
