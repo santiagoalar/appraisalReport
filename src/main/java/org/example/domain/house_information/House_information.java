@@ -11,9 +11,9 @@ import org.example.domain.house_information.values.Value;
 
 public class House_information extends AggregateEvent<House_information_id> {
 
-    private Improvements improvements;
-    private Site_description site_description;
-    private Value value;
+    protected Improvements improvements;
+    protected Site_description site_description;
+    protected Value value;
 
     public House_information(House_information_id entityId, Improvements improvements,
                              Site_description site_description,
@@ -29,5 +29,17 @@ public class House_information extends AggregateEvent<House_information_id> {
 
     public void assign_improvements(Improvements improvements){
         appendChange(new Assigned_improvements(improvements)).apply();
+    }
+
+    public Improvements improvements() {
+        return improvements;
+    }
+
+    public Site_description site_description() {
+        return site_description;
+    }
+
+    public Value value() {
+        return value;
     }
 }
