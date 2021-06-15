@@ -2,6 +2,7 @@ package org.example.domain.house_information;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import org.example.domain.house_information.events.Assigned_value;
 import org.example.domain.house_information.events.Created_house_information;
 import org.example.domain.house_information.events.Assigned_improvements;
 import org.example.domain.house_information.events.Assigned_site_description;
@@ -43,6 +44,10 @@ public class House_information extends AggregateEvent<House_information_id> {
 
     public void assign_improvements(Improvements improvements){
         appendChange(new Assigned_improvements(improvements)).apply();
+    }
+
+    public void assign_value(Value value){
+        appendChange(new Assigned_value(value)).apply();
     }
 
     public Improvements improvements() {
